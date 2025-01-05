@@ -45,9 +45,10 @@ In causal transformers, like LLAMA and GPT, a masking mechanism ensures that eac
 #### **Self-Attention Mechanism**
 Self-attention calculates a weighted sum of the values \(V\) where the weights are determined by the queries \(Q\) and keys \(K\). Mathematically, self-attention is given by:
 
-\[
+\\[
 \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
-\]
+\\]
+
 
 Here:
 - \(Q\), \(K\), and \(V\) are derived from the input embeddings through learned weight matrices.
