@@ -54,8 +54,8 @@ $$
 $$
 
 Here:
-- \(Q\), \(K\), and \(V\) are the query, key, and value matrices derived from the input embeddings.
-- \(d_k\) is the dimensionality of the key vectors.
+- $$(Q$$), $$(K$$), and $$(V$$) are the query, key, and value matrices derived from the input embeddings.
+- $$(d_k$$) is the dimensionality of the key vectors.
 - The softmax function ensures that attention scores are normalized.
 
 ![Transformer Architecture](images/figure1.png "Transformer-Model Architecture from Vaswani et al.")
@@ -144,13 +144,13 @@ LLAMA models achieve high accuracy across a variety of NLP tasks, demonstrating 
 
 ### **2.1 Concept Overview**
 
-Quantization reduces the precision of weights and activations, allowing efficient storage and computation. The formula for quantizing a value \(x\) is:
+Quantization reduces the precision of weights and activations, allowing efficient storage and computation. The formula for quantizing a value $$(x$$) is:
 
 $$
 x_q = \text{round}\left(\frac{x}{s} + z\right)
 $$
 
-where \(s\) is the scale factor, and \(z\) is the zero-point. These parameters ensure that the range of quantized values covers the dynamic range of the original floating-point values.
+where $$(s$$) is the scale factor, and $$(z$$) is the zero-point. These parameters ensure that the range of quantized values covers the dynamic range of the original floating-point values.
 
 ![Transformer Architecture](images/8bit2.png "8-bit percentage of layers from Dettmers et al.")
 
@@ -192,7 +192,7 @@ $$
 \text{FlashAttention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
 $$
 
-This approach avoids explicit computation of the full \(QK^T\) matrix, reducing memory overhead.
+This approach avoids explicit computation of the full $$(QK^T$$) matrix, reducing memory overhead.
 
 
 ![Transformer Architecture](images/flash_attention.png "Flash attention from Dao et al.")
