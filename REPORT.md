@@ -53,6 +53,14 @@ Here:
 - \(Q\), \(K\), and \(V\) are derived from the input embeddings through learned weight matrices.
 - \(d_k\) is the dimensionality of the keys, and the softmax ensures that the weights sum to 1.
 
+![Transformer Architecture](images/figure1.png "Transformer-Model Architecture from Vaswani et al.")
+
+*Figure 1: Transformer-Model Architecture from Vaswani et al. (2017).*
+
+![Transformer Architecture](images/figure2.png "Scaled Dot-Product Attention and Multi-Head Attention from Vaswani et al.")
+
+*Figure 2: (left) Scaled Dot-Product Attention. (right) Multi-Head Attention consists of several attention layers running in parallel from Vaswani et al. (2017).*
+
 #### **Multi-Head Attention**
 Multi-head attention extends self-attention by projecting the input into multiple subspaces and applying self-attention independently. This is formulated as:
 
