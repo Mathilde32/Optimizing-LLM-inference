@@ -115,9 +115,21 @@ LLAMA employs:
 - Sparse attention mechanisms for scalable processing.
 - Layer normalization for stable gradient flows.
 
+![Transformer Architecture](images/figure3.png "Helpfulness human evaluation from Touvron et al.")
+
+*Figure 3: Helpfulness human evaluation results for Llama 2-Chat compared to other open-source and closed-source models from Touvron et al. (2023).*
+
+
 #### **Experiments and Results**
 
-The LLAMA paper evaluates the model on benchmarks like WikiText-103 and LAMBADA, demonstrating state-of-the-art performance. Figure 3 shows LLAMA outperforming GPT-3 in perplexity while using fewer parameters.
+The LLAMA paper evaluates the model on benchmarks like WikiText-103 and LAMBADA, demonstrating state-of-the-art performance. Figure 4 shows LLAMA outperforming GPT-3 in perplexity while using fewer parameters.
+
+![Transformer Architecture](images/LLAMA2.png "Experiments from Touvron2 et al.")
+
+*Figure 4: Helpfulness human evaluation results for Llama 2-Chat compared to other open-source and closed-source models from Touvron et al. (2023).*
+
+
+This figure from the LLAMA Paper (Touvron et al., 2023) illustrates the scaling laws of LLAMA models, showcasing how they achieve superior performance in terms of perplexity compared to larger models like GPT-3, while requiring fewer parameters and computational resources. The figure highlights the efficiency and scalability of LLAMA across various benchmarks.
 
 #### **Pros and Cons**
 
@@ -135,6 +147,12 @@ x_q = \text{round}\left(\frac{x}{s} + z\right)
 
 where \(s\) is the scale factor, and \(z\) is the zero-point. These parameters ensure that the range of quantized values covers the dynamic range of the original floating-point values.
 
+![Transformer Architecture](images/8bit2.png "8-bit percentage of layers from Dettmers et al.")
+
+*Figure 5: Percentage of layers and all sequence dimensions affected by large magnitude outlier features across the transformer by (a) model size or (b) C4 perplexity" (Dettmers et al., 2022).*
+
+Figure 5 from "8-bit Optimizers and Quantization for Transformers" (Dettmers et al., 2022) illustrates the trade-offs between model accuracy and memory savings achieved through 8-bit quantization. The figure highlights how quantization significantly reduces memory usage while maintaining high levels of accuracy, showcasing its effectiveness for optimizing large language models in resource-constrained environments.
+
 ### **2.2 Mathematical Framework for Quantization**
 
 To minimize quantization error, the model uses a calibration dataset to determine \(s\) and \(z\). The optimal parameters minimize:
@@ -148,6 +166,12 @@ Mixed precision is applied, where critical operations retain higher precision to
 ### **2.3 Experiments and Results**
 
 The 8-bit LLM paper evaluates quantized models on tasks like GLUE and SQuAD. Results show that memory usage is reduced by 75%, while accuracy drops less than 1% compared to 32-bit models.
+
+![Transformer Architecture](images/8bit1.png "8-bit Optimizers and Quantization for Transformers from Dettmers et al.")
+
+*Table 1: 8-bit Optimizers and Quantization for Transformers" (Dettmers et al., 2022).*
+
+Table 1 from "8-bit Optimizers and Quantization for Transformers" (Dettmers et al., 2022) provides a detailed comparison of quantized and non-quantized models, highlighting metrics such as perplexity, memory usage, and computational efficiency. The table demonstrates that 8-bit quantized models achieve comparable perplexity to their 32-bit counterparts while significantly reducing memory requirements, underscoring the practicality of quantization for large-scale deployment.
 
 ### **Pros and Cons**
 
@@ -165,9 +189,27 @@ Flash Attention reduces memory bottlenecks by computing attention in a more effi
 
 This approach avoids explicit computation of the full \(QK^T\) matrix, reducing memory overhead.
 
+
+![Transformer Architecture](images/flash_attention.png "Flash attention from Dao et al.")
+
+*Figure 6: Left: FlashAttention uses tiling to prevent materialization of the large 𝑁 × 𝑁 attention matrix (dotted box) on (relatively) slow GPU HBM. In the outer loop (red arrows), FlashAttention loops through blocks of the K and V matrices and loads them to fast on-chip SRAM. In each block, FlashAttention loops over blocks of Q matrix (blue arrows), loading them to SRAM, and writing the output of the attention computation back to HBM. Right: Speedup over the PyTorch implementation of attention on GPT-2. FlashAttention does not read and write the large 𝑁 × 𝑁 attention matrix to HBM, resulting in an 7.6× speedup on the attention computation. (Dao et al., 2022).*
+
+![Transformer Architecture](images/flash_att1.png "Flash attention2 from Dao et al.")
+
+*Figure 7: Left: Forward + Backward runtime of standard attention and FlashAttention of GPT-2 medium (seq. length 1024, head dim. 64, 16 heads, batch size 64) on A100 GPU. HBM access is the primary factor affecting runtime. Middle: Forward runtime of FlashAttention (seq. length 1024, head dim. 64, 16 heads, batch size 64) on A100 GPU. Fewer HBM accesses result in faster runtime, up to a point. Right: The runtime (for seq. length 4K) of block-sparse FlashAttention is faster than FlashAttention by a factor proportional to the sparsity. (Dao et al., 2022).*
+
+Figure 7 from "Flash Attention" (Dao et al., 2022) demonstrates the mechanism by which Flash Attention reduces memory bottlenecks in attention computation. The figure visualizes how the reordering of operations, including softmax and value multiplication, minimizes memory usage and improves computational efficiency, making it well-suited for large-scale transformer models.
+
 ### **3.2 Flash Attention v1 and v2**
 
 Flash Attention v2 further optimizes GPU utilization by reducing memory fragmentation and supporting variable-length sequences.
+
+![Transformer Architecture](images/flash_att2.png "Flash attention3 from Dao")
+
+*Figure 8: Work partitioning between different warps in the forward pass (Dao, 2023).*
+
+Figure 8 from "Flash Attention v2" (Dao, 2023) showcases the advancements in speed and memory efficiency achieved with Flash Attention v2. The figure highlights performance improvements across various sequence lengths and demonstrates the enhanced scalability and parallelism introduced in this iteration, making it even more efficient for large-scale transformer applications.
+
 
 ### **3.3 Experiments and Results**
 
