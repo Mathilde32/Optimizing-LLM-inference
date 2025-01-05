@@ -69,37 +69,37 @@ Here:
 #### **Multi-Head Attention**
 Multi-head attention extends self-attention by projecting the input into multiple subspaces and applying self-attention independently. This is formulated as:
 
-\[
+$$
 \text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, ..., \text{head}_h)W^O
-\]
+$$
 
 where:
-\[
+$$
 \text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)
-\]
+$$
 
-and \(W_i^Q, W_i^K, W_i^V\) are learned projection matrices for the \(i\)-th head, and \(W^O\) is the output projection matrix.
+and $$(W_i^Q, W_i^K, W_i^V$$) are learned projection matrices for the $$(i$$)-th head, and $$(W^O$$) is the output projection matrix.
 
 #### **Positional Encoding**
 Since transformers do not inherently encode sequential order, positional encoding adds this information. It is computed as:
 
-\[
+$$
 PE_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d_{model}}}\right)
-\]
-\[
+$$
+$$
 PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_{model}}}\right)
-\]
+$$
 
-where \(pos\) is the token position, and \(i\) is the dimension index. These encodings are added to the input embeddings.
+where $$(pos$$) is the token position, and $$(i$$) is the dimension index. These encodings are added to the input embeddings.
 
 #### **Feedforward Layers**
 Each transformer layer includes a position-wise feedforward network (FFN) applied independently to each position:
 
-\[
+$$
 FFN(x) = \text{ReLU}(xW_1 + b_1)W_2 + b_2
-\]
+$$
 
-where \(W_1, W_2, b_1, b_2\) are learned parameters. The non-linearity (ReLU) enhances the model’s capacity to learn complex mappings.
+where $$(W_1, W_2, b_1, b_2$$) are learned parameters. The non-linearity (ReLU) enhances the model’s capacity to learn complex mappings.
 
 ### **1.3 LLAMA Models**
 
@@ -107,11 +107,11 @@ where \(W_1, W_2, b_1, b_2\) are learned parameters. The non-linearity (ReLU) en
 
 LLAMA models are trained using vast datasets spanning multiple domains. The training maximizes the likelihood of predicting the next token in a sequence, represented as:
 
-\[
+$$
 L(\theta) = \sum_{t=1}^T \log P(x_t | x_{1:t-1}; \theta)
-\]
+$$
 
-where \(x_t\) is the token at position \(t\), and \(\theta\) denotes model parameters. Large-scale pretraining is followed by task-specific fine-tuning to align the model outputs with human-defined objectives.
+where $$(x_t$$) is the token at position $$(t$$), and $$(\theta$$) denotes model parameters. Large-scale pretraining is followed by task-specific fine-tuning to align the model outputs with human-defined objectives.
 
 #### **Architectural Optimizations**
 
@@ -146,9 +146,9 @@ LLAMA models achieve high accuracy across a variety of NLP tasks, demonstrating 
 
 Quantization reduces the precision of weights and activations, allowing efficient storage and computation. The formula for quantizing a value \(x\) is:
 
-\[
+$$
 x_q = \text{round}\left(\frac{x}{s} + z\right)
-\]
+$$
 
 where \(s\) is the scale factor, and \(z\) is the zero-point. These parameters ensure that the range of quantized values covers the dynamic range of the original floating-point values.
 
@@ -162,9 +162,9 @@ Figure 5 from "8-bit Optimizers and Quantization for Transformers" (Dettmers et 
 
 To minimize quantization error, the model uses a calibration dataset to determine \(s\) and \(z\). The optimal parameters minimize:
 
-\[
+$$
 \text{Error} = \sum (x - (x_q \cdot s - z))^2
-\]
+$$
 
 Mixed precision is applied, where critical operations retain higher precision to balance efficiency and accuracy.
 
@@ -188,9 +188,9 @@ The 8-bit quantization provides significant memory and computational savings, en
 
 Flash Attention reduces memory bottlenecks by computing attention in a more efficient sequence. Instead of storing intermediate matrices, it computes softmax and value multiplication directly. The modified equation is:
 
-\[
+$$
 \text{FlashAttention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
-\]
+$$
 
 This approach avoids explicit computation of the full \(QK^T\) matrix, reducing memory overhead.
 
