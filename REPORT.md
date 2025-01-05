@@ -1,3 +1,7 @@
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 # Optimizing Large Language Model Inference
 
 ## **Table of Contents**
@@ -49,10 +53,14 @@ Self-attention calculates a weighted sum of the values \(V\) where the weights a
 \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
 \\]
 
+$$
+\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+$$
 
 Here:
-- \(Q\), \(K\), and \(V\) are derived from the input embeddings through learned weight matrices.
-- \(d_k\) is the dimensionality of the keys, and the softmax ensures that the weights sum to 1.
+- \\(Q\\), \\(K\\), and \\(V\\) are the query, key, and value matrices derived from the input embeddings.
+- \\(d_k\\) is the dimensionality of the key vectors.
+- The softmax function ensures that attention scores are normalized.
 
 ![Transformer Architecture](images/figure1.png "Transformer-Model Architecture from Vaswani et al.")
 
