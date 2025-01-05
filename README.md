@@ -77,11 +77,13 @@ This project demonstrates the feasibility and advantages of 8-bit quantization f
 ---
 
 ## **References**
-1. Vaswani, A., et al. (2017). "Attention Is All You Need." [arXiv:1706.03762](https://arxiv.org/abs/1706.03762).
-2. Touvron, H., et al. (2023). "LLAMA: Open and Efficient Foundation Language Models." [arXiv:2302.13971](https://arxiv.org/abs/2302.13971).
-3. Touvron, H., et al. (2023). "LLAMA 2: Open Foundation and Fine-Tuned Chat Models." [arXiv:2307.09288](https://arxiv.org/abs/2307.09288).
-4. Dettmers, T., et al. (2022). "8-bit Optimizers and Quantization for Transformers." [arXiv:2208.07339](https://arxiv.org/abs/2208.07339).
-5. Dao, T., et al. (2022). "Flash Attention: Fast and Memory-Efficient Exact Attention with IO-Awareness." [arXiv:2205.14135](https://arxiv.org/abs/2205.14135).
-6. Dao, T., et al. (2023). "Flash Attention v2: Faster and More Memory-Efficient." [arXiv:2307.08691](https://arxiv.org/abs/2307.08691).
-7. Hugging Face. "Flash Attention Documentation." [Link](https://huggingface.co/docs/text-generation-inference/conceptual/flash_attention).
+
+1. Touvron, H., et al. (2023). "LLaMA: Open and Efficient Foundation Language Models." [paper/LLAMA1.pdf](paper/LLAMA1.pdf).  
+2. Touvron, H., et al. (2023). "LLaMA 2: Open Foundation and Fine-Tuned Chat Models." [paper/LLAMA2.pdf](paper/LLAMA2.pdf).  
+3. Dettmers, T., et al. (2022). "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale." [paper/LLAMA8bit1.pdf](paper/LLAMA8bit1.pdf).  
+4. Dettmers, T., et al. (2023). "8-bit Optimizers and Quantization for Transformers." [paper/LLAMA8bit2.pdf](paper/LLAMA8bit2.pdf).  
+5. Dao, T., et al. (2022). "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness." [paper/Flash_att1.pdf](paper/Flash_att1.pdf).  
+6. Dao, T., et al. (2023). "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning." [paper/Flash_att2.pdf](paper/Flash_att2.pdf).  
+7. Gordić, A. (2023). "ELI5: FlashAttention. Step by step explanation of how one of the fastest attention mechanisms works." [paper/Flash_att4.pdf](paper/Flash_att4.pdf).  
+8. Hugging Face Documentation (2023). "Flash Attention Documentation." [paper/Flash_att3.pdf](paper/Flash_att3.pdf). 
 
