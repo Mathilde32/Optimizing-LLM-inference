@@ -49,17 +49,13 @@ In causal transformers, like LLAMA and GPT, a masking mechanism ensures that eac
 #### **Self-Attention Mechanism**
 Self-attention calculates a weighted sum of the values \(V\) where the weights are determined by the queries \(Q\) and keys \(K\). Mathematically, self-attention is given by:
 
-\\[
-\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
-\\]
-
 $$
 \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
 $$
 
 Here:
-- \\(Q\\), \\(K\\), and \\(V\\) are the query, key, and value matrices derived from the input embeddings.
-- \\(d_k\\) is the dimensionality of the key vectors.
+- \(Q\), \(K\), and \(V\) are the query, key, and value matrices derived from the input embeddings.
+- \(d_k\) is the dimensionality of the key vectors.
 - The softmax function ensures that attention scores are normalized.
 
 ![Transformer Architecture](images/figure1.png "Transformer-Model Architecture from Vaswani et al.")
